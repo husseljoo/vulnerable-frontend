@@ -32,7 +32,6 @@ function Registration() {
         },
         body: JSON.stringify(formData),
       });
-      console.log(JSON.stringify(formData));
 
       const data = await response.json();
 

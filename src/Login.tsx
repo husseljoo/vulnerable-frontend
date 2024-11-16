@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+interface Authorization {
+    token: string;
+    type: string;
+}
+
 interface LoginResponse {
     status: string;
-    message?: string;
+    authorization?: Authorization;
 }
+
 
 const Login: React.FC = () => {
     const [email, setEmail] = useState<string>('');
@@ -23,7 +29,7 @@ const Login: React.FC = () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '', // CSRF token from Laravel
+                    // 'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '', // CSRF token from Laravel
                 },
                 body: JSON.stringify(credentials),
             });
@@ -33,12 +39,16 @@ const Login: React.FC = () => {
                 if (data.status === 'success') {
                     setSuccessMessage('Login successful!');
                     setErrorMessage('');
+                     if (data.authorization?.token) {
+                        localStorage.setItem('jwt_token', data.authorization.token);
+                    } else {
+                        console.error("Authorization token is missing");
+                    }
                     // Redirect to the dashboard
-                    navigate('/dashboard'); // Using React Router's navigate function
+                    navigate('/dashboard');
                 }
             } else {
-                const errorData: LoginResponse = await response.json();
-                setErrorMessage(errorData.message || 'Login failed');
+                setErrorMessage('Login failed');
                 setSuccessMessage('');
             }
         } catch (error) {
