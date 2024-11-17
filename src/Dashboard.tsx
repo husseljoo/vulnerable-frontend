@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
@@ -41,13 +41,13 @@ function Dashboard() {
     return <div>Loading...</div>;
   }
 
-  // if (error) {
-  //   return <div>Error: {error}</div>;
-  // }
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div>
-      <p>Welcom to your Dashboard</p>
+      <p>Welcome to your Dashboard</p>
       <h1>Hi, {userName}!</h1>
     </div>
   );

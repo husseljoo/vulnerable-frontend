@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #2c3e50; /* The previous blue background color */
+  color: #ecf0f1; /* Text color */
+  min-height: 100vh; /* Ensure the background covers the entire viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container for centering content */
+.container {
+  max-width: 1200px;
+  width: 100%; /* Ensure container takes full width */
+  text-align: center;
+}
+
+/* Header styles */
+.homepage-header {
+  padding: 50px 0;
+}
+
+/* Title styles */
+.homepage-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 20px 40px; /* Larger padding for buttons */
+  font-size: 1.5rem; /* Larger font size */
+  font-weight: bold;
+  color: #fff;
+  background-color: #3498db; /* Blue button color (same as before) */
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 15px;
+}
