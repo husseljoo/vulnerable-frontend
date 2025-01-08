@@ -11,7 +11,8 @@ function Dashboard() {
     // Fetch the user data from the backend API
     const fetchUserData = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/dashboard', {
+        const API_URL = process.env.REACT_APP_API_URL;
+        const response = await fetch(`${API_URL}/api/dashboard`, {
           method: 'GET', // Adjust to POST or other methods if needed
           headers: {
             'Content-Type': 'application/json',

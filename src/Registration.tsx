@@ -24,7 +24,12 @@ function Registration() {
     // const csrfToken = document.head.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
 
     try {
-      const response = await fetch('http://localhost:8000/api/auth/register', {
+      const API_URL = process.env.REACT_APP_API_URL;
+      console.log('API_URL', `${API_URL}/api/auth/register`);
+      console.log('formData', formData);
+      console.log('formData', JSON.stringify(formData));
+
+      const response = await fetch(`${API_URL}/api/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -32,6 +37,8 @@ function Registration() {
         },
         body: JSON.stringify(formData),
       });
+
+      console.log('Raw response:', response);
 
       const data = await response.json();
 
